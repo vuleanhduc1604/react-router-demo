@@ -12,7 +12,12 @@ import PostDetail from './pages/post-detail/PostDetail'
 const routes = createRoutesFromElements(
   <Route element={<Layout/>}>
     <Route path="/" element={<Home />} loader={Home.loader}/>
-    <Route path="/post/:postId" element={<PostDetail/>} loader={PostDetail.loader}/>
+    
+    <Route 
+    // Tham số hóa đường dẫn
+     path="/post/:postId"
+     element={<PostDetail/>} 
+     loader={PostDetail.loader}/>
     <Route path='*' element={<div>Page not found</div>}/>
   </Route>
 )
