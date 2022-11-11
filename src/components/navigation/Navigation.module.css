@@ -1,0 +1,12 @@
+.nav {
+    display: flex;
+    flex-direction: row;
+    gap: 20px
+}
+.link {
+    text-decoration: none;
+}
+.active {
+    text-decoration: green;
+    color: green
+}

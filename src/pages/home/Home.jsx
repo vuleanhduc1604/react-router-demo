@@ -1,14 +1,28 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-
+import { Link, useLoaderData } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 const Home = () => {
+    const posts = useLoaderData();
     return (
-        <div>
-            <NavLink to='/'>Homepage</NavLink>
-            <NavLink to='/about'>About</NavLink>
-            <NavLink to='/contact'>Contact</NavLink>
-            <main>Home</main>
-        </div>     
+        <main>
+            <div>
+                {posts.map((post) => <Link key={post.id} to={"/post/" + post.id}>
+                    <div>
+                        <h3>{post.title}</h3>
+                        <p>{post.body}</p>
+                    </div>
+                </Link>)}
+            </div>
+        </main>  
+        
+    );
+};
+
+
+
+Home.loader = async () => {
+    return fetch("https://jsonplaceholder.typicode.com/posts").then((res) =>
+        res.json()
     );
 };
 
